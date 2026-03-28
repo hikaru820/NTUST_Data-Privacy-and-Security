@@ -1,6 +1,7 @@
 # DataConversion_Kanon.py
 # Reads Anonymized Dataset
 import numpy as np
+from pathlib import Path
 
 def parse_range(val):
     val = str(val).strip()
@@ -22,36 +23,41 @@ def load_anonymized(k):
     from sklearn.model_selection import train_test_split
     from sklearn.preprocessing import StandardScaler
 
-    df = pd.read_csv(f'../adult_k{k}.csv')
+    base_dir = Path(__file__).resolve().parent
+    df = pd.read_csv(base_dir.parent / f'adult_k{k}.csv')
 
     # Same drops as original
     df = df.drop(['fnlwgt', 'education', 'native-country'], axis=1)
 
-    # Parse numeric QI range strings to midpoints
-    for col in ['age', 'educational-num', 'hours-per-week']:
-        df[col] = df[col].apply(parse_range)
-        df[col] = df[col].fillna(df[col].mean())
+    if df['income'].dtype == object:
+        df['income'] = df['income'].map({'<=50K': 0, '>50K': 1})
 
     y = df['income']
     x = df.drop('income', axis=1)
 
-    x = pd.get_dummies(x, columns=['workclass', 'marital-status', 'occupation',
-                                    'relationship', 'race', 'gender'])
+    # Parse numeric QI range strings to midpoints
+    for col in ['age', 'educational-num', 'hours-per-week']:
+        x[col] = x[col].apply(parse_range)
 
-    # Align columns with the original feature space so the model can be evaluated
-    # against x_test_orig (which includes native-country and original category values).
-    # Generalized-only columns (e.g. race_*, race_Non-White) are dropped because they
-    # don't exist in the original; suppressed columns (native-country_*) are filled with 0.
-    orig = pd.read_csv('../adult.csv')
-    orig = orig.replace(r'^\s*\?\s*$', np.nan, regex=True).dropna()
-    orig = orig.drop(['fnlwgt', 'education', 'income'], axis=1)
-    orig_dummies = pd.get_dummies(orig, columns=['workclass', 'marital-status', 'occupation',
-                                                  'relationship', 'race', 'gender',
-                                                  'native-country'])
-    x = x.reindex(columns=orig_dummies.columns, fill_value=0)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42, stratify=y)
+
+    for col in ['age', 'educational-num', 'hours-per-week']:
+        mean_value = x_train[col].mean()
+        x_train[col] = x_train[col].fillna(mean_value)
+        x_test[col] = x_test[col].fillna(mean_value)
+
+    x_train = pd.get_dummies(x_train, columns=['workclass', 'marital-status', 'occupation',
+                                               'relationship', 'race', 'gender'])
+    x_test = pd.get_dummies(x_test, columns=['workclass', 'marital-status', 'occupation',
+                                             'relationship', 'race', 'gender'])
+
+    all_columns = x_train.columns.union(x_test.columns)
+    x_train = x_train.reindex(columns=all_columns, fill_value=0)
+    x_test = x_test.reindex(columns=all_columns, fill_value=0)
 
     scaler = StandardScaler()
     num_cols = ['age', 'educational-num', 'capital-gain', 'capital-loss', 'hours-per-week']
-    x[num_cols] = scaler.fit_transform(x[num_cols])
+    x_train[num_cols] = scaler.fit_transform(x_train[num_cols])
+    x_test[num_cols] = scaler.transform(x_test[num_cols])
 
-    return train_test_split(x, y, test_size=0.2, random_state=42)
+    return x_train, x_test, y_train, y_test

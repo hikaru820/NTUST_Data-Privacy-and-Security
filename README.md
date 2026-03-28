@@ -96,7 +96,7 @@ marital-status:
 分別在**原始資料**與各 **K 值匿名化資料**上訓練：
 
 - **SVM**（Support Vector Machine）
-- **Deep Learning**（Neural Network，使用 PyTorch / Keras）
+- **MLP**（Neural Network，使用 scikit-learn）
 
 ### 評估指標
 

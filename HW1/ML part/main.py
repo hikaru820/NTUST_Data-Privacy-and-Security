@@ -15,9 +15,9 @@ mlp_results = {'original': train_mlp(x_train_orig, x_test_orig, y_train_orig, y_
 
 for k in K_VALUES:
     print(f"\n=== Training on K={k} Anonymized Data ===")
-    x_train_anon, _, y_train_anon, _ = load_anonymized(k)  # only use train portion
-    svm_results[k] = train_svm(x_train_anon, x_test_orig, y_train_anon, y_test_orig, label=f'k{k}')
-    mlp_results[k] = train_mlp(x_train_anon, x_test_orig, y_train_anon, y_test_orig, label=f'k{k}')
+    x_train_anon, x_test_anon, y_train_anon, y_test_anon = load_anonymized(k)
+    svm_results[k] = train_svm(x_train_anon, x_test_anon, y_train_anon, y_test_anon, label=f'k{k}')
+    mlp_results[k] = train_mlp(x_train_anon, x_test_anon, y_train_anon, y_test_anon, label=f'k{k}')
 
 # Final comparison summary
 print("\n=== Results Summary ===")
