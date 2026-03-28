@@ -1,4 +1,4 @@
-# Model.py
+# SVM.py
 from sklearn.linear_model import SGDClassifier
 from datetime import datetime
 from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score
