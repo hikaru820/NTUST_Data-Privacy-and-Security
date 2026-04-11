@@ -1,0 +1,47 @@
+{
+  "baseline": {
+    "test_accuracy": 98.46,
+    "train_accuracy": 98.44083867521367
+  },
+  "dp_results": [
+    {
+      "target_epsilon": 1.0,
+      "actual_epsilon": 1.0006358859404048,
+      "noise_multiplier": 0.908203125,
+      "test_accuracy": 91.57,
+      "train_accuracy": 90.51515252099446,
+      "delta": 1e-05
+    },
+    {
+      "target_epsilon": 2.0,
+      "actual_epsilon": 1.9956864090985178,
+      "noise_multiplier": 0.731201171875,
+      "test_accuracy": 92.13,
+      "train_accuracy": 90.87946241075178,
+      "delta": 1e-05
+    },
+    {
+      "target_epsilon": 4.0,
+      "actual_epsilon": 4.006866869167496,
+      "noise_multiplier": 0.5999755859375,
+      "test_accuracy": 92.71,
+      "train_accuracy": 91.8242892325219,
+      "delta": 1e-05
+    },
+    {
+      "target_epsilon": 8.0,
+      "actual_epsilon": 8.009157351815478,
+      "noise_multiplier": 0.490570068359375,
+      "test_accuracy": 92.01,
+      "train_accuracy": 90.77708203931576,
+      "delta": 1e-05
+    }
+  ],
+  "config": {
+    "epochs": 5,
+    "batch_size": 256,
+    "learning_rate": 0.1,
+    "max_grad_norm": 1.0,
+    "delta": 1e-05
+  }
+}
