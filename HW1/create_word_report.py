@@ -13,7 +13,7 @@ def create_report():
     doc.styles['Normal'].font.size = Pt(12)
 
     # 標題
-    title = doc.add_heading('期中作業 Task C - 差異隱私合成數據生成與效能對比分析報告', 0)
+    title = doc.add_heading('期中作業 midterm-HW1 - 差異隱私合成數據生成與效能對比分析報告', 0)
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     for run in title.runs:
         run.font.name = u'Microsoft JhengHei'
@@ -116,7 +116,7 @@ def create_report():
     else:
         doc.add_paragraph("\n[圖片 HW1_Midterm_Comparison.png 請在此處插入]")
 
-    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "期中作業_TaskC_差異隱私專題報告.docx")
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Midterm_Differentially Private Synthetic Data-HW1.docx")
     doc.save(output_path)
     print("Docx created:", output_path)
 
