@@ -1,0 +1,15 @@
+=== MLP Results ===
+Timestamp:         20260425_223926
+Best Epoch:        15/100
+
+--- Model Config ---
+Hidden Layers:     (64, 32)
+Activation:        tanh
+Alpha:             0.01
+
+--- Metrics ---
+AUC:               0.6953
+Accuracy:          0.7343
+Misclassification: 0.2657
+Precision:         0.6406
+Recall:            0.1587
