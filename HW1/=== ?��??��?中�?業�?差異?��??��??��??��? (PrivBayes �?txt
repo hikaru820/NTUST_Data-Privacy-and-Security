@@ -1,0 +1,433 @@
+=== 初始化期中作業：差異隱私合成數據生成 (PrivBayes 模式) ===
+原始資料: (45222, 15)
+
+--- 開始生成 DP 合成數據 (Epsilon = 0.1) ---
+================ Constructing Bayesian Network (BN) ================
+Adding ROOT race
+Adding attribute relationship
+Adding attribute gender
+Adding attribute marital-status
+Adding attribute capital-gain
+Adding attribute occupation
+Adding attribute hours-per-week
+Adding attribute educational-num
+Adding attribute income
+Adding attribute capital-loss
+Adding attribute age
+Adding attribute workclass
+========================== BN constructed ==========================
+/home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/.venv/lib/python3.13/site-packages/DataSynthesizer/datatypes/StringAttribute.py:60: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '['kkeynk' 'uyoxfe' 'ushewiqe' ... 'ptkjjh' 'axdbqq' 'czfhjj']' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  column[~column.isnull()] = column[~column.isnull()].apply(lambda x: utils.generate_random_string(int(x)))
+/home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/.venv/lib/python3.13/site-packages/DataSynthesizer/datatypes/StringAttribute.py:60: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '['zxvvzmaju' 'juqicumwzacgd' 'hbdpjvhljdio' ... 'ulbtnxmyscytw'
+ 'mevsrsdjjgtrv' 'pbhjigsvugpoz']' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  column[~column.isnull()] = column[~column.isnull()].apply(lambda x: utils.generate_random_string(int(x)))
+  完成！耗時 43.3s，生成 45222 筆，已保存至 /home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/DP_outputs/adult_dp_0.1.csv
+
+--- 開始使用 DP 合成數據 (Epsilon = 0.1) 訓練模型 ---
+訓練 SVM 模組...
+Iteration 10/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7960
+Iteration 20/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7982
+Iteration 30/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7969
+Iteration 40/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7980
+Iteration 50/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7944
+Iteration 60/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7955
+Iteration 70/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7937
+Iteration 80/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7959
+Iteration 90/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7943
+Iteration 100/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7927
+Iteration 110/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7917
+Iteration 120/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7958
+Iteration 130/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7961
+Iteration 140/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7915
+Iteration 150/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7927
+Iteration 160/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7936
+Iteration 170/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7927
+Iteration 180/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7968
+Iteration 190/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7944
+Iteration 200/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7968
+Iteration 210/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7943
+Iteration 220/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7963
+Iteration 230/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7940
+Iteration 240/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7917
+Iteration 250/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7951
+Iteration 260/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7951
+Iteration 270/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7951
+Iteration 280/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7939
+Iteration 290/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7954
+Iteration 300/300 | Train Acc: 0.7353 | Test Acc: 0.7347 | AUC: 0.7948
+Best model saved at epoch 194 with AUC: 0.7997 and accuracy: 0.7347
+Accuracy:          0.7347
+Misclassification: 0.2653
+Precision:         0.2977
+Recall:            0.0658
+AUC:               0.7948
+Results logged to 'SVMlogs/DP_eps_0.1_SVMresult_20260426_144938.txt'
+訓練 MLP 模組...
+Iteration 10/100 | Train Acc: 0.8073 | Test Acc: 0.7819 | AUC: 0.7859
+Iteration 20/100 | Train Acc: 0.8121 | Test Acc: 0.7789 | AUC: 0.7859
+Iteration 30/100 | Train Acc: 0.8146 | Test Acc: 0.7770 | AUC: 0.7842
+Iteration 40/100 | Train Acc: 0.8168 | Test Acc: 0.7763 | AUC: 0.7834
+Iteration 50/100 | Train Acc: 0.8188 | Test Acc: 0.7751 | AUC: 0.7837
+Iteration 60/100 | Train Acc: 0.8207 | Test Acc: 0.7735 | AUC: 0.7835
+Iteration 70/100 | Train Acc: 0.8232 | Test Acc: 0.7726 | AUC: 0.7830
+Iteration 80/100 | Train Acc: 0.8246 | Test Acc: 0.7730 | AUC: 0.7827
+Iteration 90/100 | Train Acc: 0.8268 | Test Acc: 0.7724 | AUC: 0.7824
+Iteration 100/100 | Train Acc: 0.8286 | Test Acc: 0.7718 | AUC: 0.7823
+Best model saved at epoch 2 with AUC: 0.8162 and accuracy: 0.8014
+Accuracy:          0.8014
+Misclassification: 0.1986
+Precision:         0.6234
+Recall:            0.4666
+AUC:               0.8162
+Results logged to 'MLPlogs/DP_eps_0.1_MLPresult_20260426_145007.txt'
+
+--- 開始生成 DP 合成數據 (Epsilon = 0.5) ---
+================ Constructing Bayesian Network (BN) ================
+Adding ROOT race
+Adding attribute relationship
+Adding attribute marital-status
+Adding attribute gender
+Adding attribute age
+Adding attribute income
+Adding attribute capital-gain
+Adding attribute occupation
+Adding attribute educational-num
+Adding attribute hours-per-week
+Adding attribute workclass
+Adding attribute capital-loss
+========================== BN constructed ==========================
+/home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/.venv/lib/python3.13/site-packages/DataSynthesizer/datatypes/StringAttribute.py:60: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '['kkeynk' 'uyoxfe' 'ushewiqe' ... 'idadsb' 'ccdymz' 'fqxqox']' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  column[~column.isnull()] = column[~column.isnull()].apply(lambda x: utils.generate_random_string(int(x)))
+/home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/.venv/lib/python3.13/site-packages/DataSynthesizer/datatypes/StringAttribute.py:60: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '['ftaeswojpdkyh' 'xnkxaztlfzh' 'xucymutfzuki' ... 'vyiqrereqzlwj'
+ 'lmaaaknimwxqk' 'mwcewzgvnyyby']' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  column[~column.isnull()] = column[~column.isnull()].apply(lambda x: utils.generate_random_string(int(x)))
+  完成！耗時 40.0s，生成 45222 筆，已保存至 /home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/DP_outputs/adult_dp_0.5.csv
+
+--- 開始使用 DP 合成數據 (Epsilon = 0.5) 訓練模型 ---
+訓練 SVM 模組...
+Iteration 10/300 | Train Acc: 0.7499 | Test Acc: 0.7563 | AUC: 0.7312
+Iteration 20/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7253
+Iteration 30/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7167
+Iteration 40/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7136
+Iteration 50/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7134
+Iteration 60/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7128
+Iteration 70/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7119
+Iteration 80/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7103
+Iteration 90/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7125
+Iteration 100/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7149
+Iteration 110/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7095
+Iteration 120/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7113
+Iteration 130/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7159
+Iteration 140/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7126
+Iteration 150/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7166
+Iteration 160/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7152
+Iteration 170/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7110
+Iteration 180/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7151
+Iteration 190/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7115
+Iteration 200/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7112
+Iteration 210/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7104
+Iteration 220/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7132
+Iteration 230/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7142
+Iteration 240/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7131
+Iteration 250/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7165
+Iteration 260/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7133
+Iteration 270/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7111
+Iteration 280/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7124
+Iteration 290/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7147
+Iteration 300/300 | Train Acc: 0.7501 | Test Acc: 0.7563 | AUC: 0.7098
+Best model saved at epoch 17 with AUC: 0.7330 and accuracy: 0.7563
+Accuracy:          0.7563
+Misclassification: 0.2437
+Precision:         0.4286
+Recall:            0.0014
+AUC:               0.7098
+Results logged to 'SVMlogs/DP_eps_0.5_SVMresult_20260426_145105.txt'
+訓練 MLP 模組...
+Iteration 10/100 | Train Acc: 0.7859 | Test Acc: 0.7675 | AUC: 0.8040
+Iteration 20/100 | Train Acc: 0.7937 | Test Acc: 0.7674 | AUC: 0.8094
+Iteration 30/100 | Train Acc: 0.7963 | Test Acc: 0.7673 | AUC: 0.8051
+Iteration 40/100 | Train Acc: 0.7975 | Test Acc: 0.7664 | AUC: 0.8030
+Iteration 50/100 | Train Acc: 0.7998 | Test Acc: 0.7657 | AUC: 0.8020
+Iteration 60/100 | Train Acc: 0.8024 | Test Acc: 0.7650 | AUC: 0.8008
+Iteration 70/100 | Train Acc: 0.8036 | Test Acc: 0.7646 | AUC: 0.7995
+Iteration 80/100 | Train Acc: 0.8058 | Test Acc: 0.7643 | AUC: 0.7980
+Iteration 90/100 | Train Acc: 0.8082 | Test Acc: 0.7647 | AUC: 0.7964
+Iteration 100/100 | Train Acc: 0.8104 | Test Acc: 0.7638 | AUC: 0.7949
+Best model saved at epoch 19 with AUC: 0.8096 and accuracy: 0.7677
+Accuracy:          0.7677
+Misclassification: 0.2323
+Precision:         0.6783
+Recall:            0.0881
+AUC:               0.8096
+Results logged to 'MLPlogs/DP_eps_0.5_MLPresult_20260426_145134.txt'
+
+--- 開始生成 DP 合成數據 (Epsilon = 1.0) ---
+================ Constructing Bayesian Network (BN) ================
+Adding ROOT race
+Adding attribute relationship
+Adding attribute marital-status
+Adding attribute gender
+Adding attribute age
+Adding attribute income
+Adding attribute occupation
+Adding attribute educational-num
+Adding attribute hours-per-week
+Adding attribute capital-gain
+Adding attribute workclass
+Adding attribute capital-loss
+========================== BN constructed ==========================
+/home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/.venv/lib/python3.13/site-packages/DataSynthesizer/datatypes/StringAttribute.py:60: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '['kkeynk' 'uyoxfe' 'ushewiq' ... 'ggjiwd' 'hwaaiw' 'nxdtut']' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  column[~column.isnull()] = column[~column.isnull()].apply(lambda x: utils.generate_random_string(int(x)))
+/home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/.venv/lib/python3.13/site-packages/DataSynthesizer/datatypes/StringAttribute.py:60: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '['sgzezvakzneoj' 'ozomkiruoqkqk' 'dwabvrdsfzuk' ... 'drijiernbhijb'
+ 'vhqfzjnkvplsx' 'xfhosjwgsfrag']' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  column[~column.isnull()] = column[~column.isnull()].apply(lambda x: utils.generate_random_string(int(x)))
+  完成！耗時 39.6s，生成 45222 筆，已保存至 /home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/DP_outputs/adult_dp_1.0.csv
+
+--- 開始使用 DP 合成數據 (Epsilon = 1.0) 訓練模型 ---
+訓練 SVM 模組...
+Iteration 10/300 | Train Acc: 0.7901 | Test Acc: 0.8125 | AUC: 0.8463
+Iteration 20/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8454
+Iteration 30/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8468
+Iteration 40/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8458
+Iteration 50/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8448
+Iteration 60/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8450
+Iteration 70/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8445
+Iteration 80/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8444
+Iteration 90/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8440
+Iteration 100/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8446
+Iteration 110/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8460
+Iteration 120/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8460
+Iteration 130/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8457
+Iteration 140/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8460
+Iteration 150/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8460
+Iteration 160/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8451
+Iteration 170/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8462
+Iteration 180/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8446
+Iteration 190/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8453
+Iteration 200/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8464
+Iteration 210/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8462
+Iteration 220/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8449
+Iteration 230/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8451
+Iteration 240/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8443
+Iteration 250/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8447
+Iteration 260/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8455
+Iteration 270/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8460
+Iteration 280/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8460
+Iteration 290/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8454
+Iteration 300/300 | Train Acc: 0.7902 | Test Acc: 0.8127 | AUC: 0.8448
+Best model saved at epoch 2 with AUC: 0.8486 and accuracy: 0.8153
+Accuracy:          0.8153
+Misclassification: 0.1847
+Precision:         0.6534
+Recall:            0.5143
+AUC:               0.8448
+Results logged to 'SVMlogs/DP_eps_1.0_SVMresult_20260426_145229.txt'
+訓練 MLP 模組...
+Iteration 10/100 | Train Acc: 0.8210 | Test Acc: 0.8247 | AUC: 0.8656
+Iteration 20/100 | Train Acc: 0.8246 | Test Acc: 0.8247 | AUC: 0.8636
+Iteration 30/100 | Train Acc: 0.8266 | Test Acc: 0.8234 | AUC: 0.8627
+Iteration 40/100 | Train Acc: 0.8290 | Test Acc: 0.8244 | AUC: 0.8622
+Iteration 50/100 | Train Acc: 0.8308 | Test Acc: 0.8242 | AUC: 0.8620
+Iteration 60/100 | Train Acc: 0.8326 | Test Acc: 0.8241 | AUC: 0.8613
+Iteration 70/100 | Train Acc: 0.8338 | Test Acc: 0.8244 | AUC: 0.8604
+Iteration 80/100 | Train Acc: 0.8357 | Test Acc: 0.8245 | AUC: 0.8591
+Iteration 90/100 | Train Acc: 0.8370 | Test Acc: 0.8234 | AUC: 0.8576
+Iteration 100/100 | Train Acc: 0.8382 | Test Acc: 0.8234 | AUC: 0.8560
+Best model saved at epoch 5 with AUC: 0.8672 and accuracy: 0.8263
+Accuracy:          0.8263
+Misclassification: 0.1737
+Precision:         0.6948
+Recall:            0.5116
+AUC:               0.8672
+Results logged to 'MLPlogs/DP_eps_1.0_MLPresult_20260426_145257.txt'
+
+--- 開始生成 DP 合成數據 (Epsilon = 5.0) ---
+================ Constructing Bayesian Network (BN) ================
+Adding ROOT race
+Adding attribute relationship
+Adding attribute marital-status
+Adding attribute gender
+Adding attribute age
+Adding attribute income
+Adding attribute occupation
+Adding attribute educational-num
+Adding attribute hours-per-week
+Adding attribute workclass
+Adding attribute capital-gain
+Adding attribute capital-loss
+========================== BN constructed ==========================
+/home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/.venv/lib/python3.13/site-packages/DataSynthesizer/datatypes/StringAttribute.py:60: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '['kkeynk' 'uyoxfe' 'ushewiq' ... 'jjkgys' 'mlkinw' 'murnin']' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  column[~column.isnull()] = column[~column.isnull()].apply(lambda x: utils.generate_random_string(int(x)))
+/home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/.venv/lib/python3.13/site-packages/DataSynthesizer/datatypes/StringAttribute.py:60: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '['yezqucvluizym' 'dpqerjorvnwsd' 'skgqmrfynewa' ... 'wzbppdznffstr'
+ 'cwgtpdiljazfk' 'mebkwnprdrlyy']' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  column[~column.isnull()] = column[~column.isnull()].apply(lambda x: utils.generate_random_string(int(x)))
+  完成！耗時 38.8s，生成 45222 筆，已保存至 /home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/DP_outputs/adult_dp_5.0.csv
+
+--- 開始使用 DP 合成數據 (Epsilon = 5.0) 訓練模型 ---
+訓練 SVM 模組...
+Iteration 10/300 | Train Acc: 0.8192 | Test Acc: 0.8165 | AUC: 0.8630
+Iteration 20/300 | Train Acc: 0.8184 | Test Acc: 0.8163 | AUC: 0.8636
+Iteration 30/300 | Train Acc: 0.8181 | Test Acc: 0.8145 | AUC: 0.8646
+Iteration 40/300 | Train Acc: 0.8181 | Test Acc: 0.8146 | AUC: 0.8643
+Iteration 50/300 | Train Acc: 0.8181 | Test Acc: 0.8146 | AUC: 0.8643
+Iteration 60/300 | Train Acc: 0.8181 | Test Acc: 0.8146 | AUC: 0.8648
+Iteration 70/300 | Train Acc: 0.8182 | Test Acc: 0.8147 | AUC: 0.8646
+Iteration 80/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8651
+Iteration 90/300 | Train Acc: 0.8182 | Test Acc: 0.8147 | AUC: 0.8651
+Iteration 100/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8646
+Iteration 110/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8649
+Iteration 120/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8651
+Iteration 130/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8650
+Iteration 140/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8655
+Iteration 150/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8651
+Iteration 160/300 | Train Acc: 0.8182 | Test Acc: 0.8147 | AUC: 0.8647
+Iteration 170/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8655
+Iteration 180/300 | Train Acc: 0.8182 | Test Acc: 0.8147 | AUC: 0.8651
+Iteration 190/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8657
+Iteration 200/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8653
+Iteration 210/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8652
+Iteration 220/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8660
+Iteration 230/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8653
+Iteration 240/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8652
+Iteration 250/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8655
+Iteration 260/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8654
+Iteration 270/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8648
+Iteration 280/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8653
+Iteration 290/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8653
+Iteration 300/300 | Train Acc: 0.8181 | Test Acc: 0.8147 | AUC: 0.8654
+Best model saved at epoch 1 with AUC: 0.8700 and accuracy: 0.8216
+Accuracy:          0.8216
+Misclassification: 0.1784
+Precision:         0.7099
+Recall:            0.4521
+AUC:               0.8654
+Results logged to 'SVMlogs/DP_eps_5.0_SVMresult_20260426_145351.txt'
+訓練 MLP 模組...
+Iteration 10/100 | Train Acc: 0.8483 | Test Acc: 0.8461 | AUC: 0.8918
+Iteration 20/100 | Train Acc: 0.8505 | Test Acc: 0.8440 | AUC: 0.8918
+Iteration 30/100 | Train Acc: 0.8523 | Test Acc: 0.8450 | AUC: 0.8916
+Iteration 40/100 | Train Acc: 0.8530 | Test Acc: 0.8447 | AUC: 0.8913
+Iteration 50/100 | Train Acc: 0.8541 | Test Acc: 0.8444 | AUC: 0.8909
+Iteration 60/100 | Train Acc: 0.8550 | Test Acc: 0.8446 | AUC: 0.8904
+Iteration 70/100 | Train Acc: 0.8561 | Test Acc: 0.8446 | AUC: 0.8898
+Iteration 80/100 | Train Acc: 0.8577 | Test Acc: 0.8437 | AUC: 0.8889
+Iteration 90/100 | Train Acc: 0.8584 | Test Acc: 0.8433 | AUC: 0.8881
+Iteration 100/100 | Train Acc: 0.8597 | Test Acc: 0.8430 | AUC: 0.8871
+Best model saved at epoch 16 with AUC: 0.8918 and accuracy: 0.8448
+Accuracy:          0.8448
+Misclassification: 0.1552
+Precision:         0.7199
+Recall:            0.5937
+AUC:               0.8918
+Results logged to 'MLPlogs/DP_eps_5.0_MLPresult_20260426_145420.txt'
+
+--- 開始生成 DP 合成數據 (Epsilon = 10.0) ---
+================ Constructing Bayesian Network (BN) ================
+Adding ROOT race
+Adding attribute relationship
+Adding attribute marital-status
+Adding attribute gender
+Adding attribute age
+Adding attribute income
+Adding attribute occupation
+Adding attribute educational-num
+Adding attribute hours-per-week
+Adding attribute workclass
+Adding attribute capital-gain
+Adding attribute capital-loss
+========================== BN constructed ==========================
+/home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/.venv/lib/python3.13/site-packages/DataSynthesizer/datatypes/StringAttribute.py:60: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '['kkeynk' 'uyoxfe' 'ushewiq' ... 'gwqjjk' 'gysmlk' 'inwmur']' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  column[~column.isnull()] = column[~column.isnull()].apply(lambda x: utils.generate_random_string(int(x)))
+/home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/.venv/lib/python3.13/site-packages/DataSynthesizer/datatypes/StringAttribute.py:60: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '['bphyezqucvlui' 'zymdpqerjorvn' 'wsdskgqmrfyn' ... 'zatznrvjjnpzl'
+ 'daraqurxcstos' 'vgeyleezgkddq']' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  column[~column.isnull()] = column[~column.isnull()].apply(lambda x: utils.generate_random_string(int(x)))
+  完成！耗時 40.6s，生成 45222 筆，已保存至 /home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/DP_outputs/adult_dp_10.0.csv
+
+--- 開始使用 DP 合成數據 (Epsilon = 10.0) 訓練模型 ---
+訓練 SVM 模組...
+Iteration 10/300 | Train Acc: 0.8197 | Test Acc: 0.8158 | AUC: 0.8674
+Iteration 20/300 | Train Acc: 0.8185 | Test Acc: 0.8145 | AUC: 0.8679
+Iteration 30/300 | Train Acc: 0.8184 | Test Acc: 0.8145 | AUC: 0.8684
+Iteration 40/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8685
+Iteration 50/300 | Train Acc: 0.8184 | Test Acc: 0.8145 | AUC: 0.8684
+Iteration 60/300 | Train Acc: 0.8184 | Test Acc: 0.8145 | AUC: 0.8684
+Iteration 70/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8685
+Iteration 80/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8685
+Iteration 90/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8682
+Iteration 100/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8688
+Iteration 110/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8682
+Iteration 120/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8684
+Iteration 130/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8686
+Iteration 140/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8683
+Iteration 150/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8685
+Iteration 160/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8673
+Iteration 170/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8687
+Iteration 180/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8690
+Iteration 190/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8678
+Iteration 200/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8681
+Iteration 210/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8676
+Iteration 220/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8688
+Iteration 230/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8688
+Iteration 240/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8679
+Iteration 250/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8678
+Iteration 260/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8687
+Iteration 270/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8691
+Iteration 280/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8683
+Iteration 290/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8692
+Iteration 300/300 | Train Acc: 0.8183 | Test Acc: 0.8145 | AUC: 0.8683
+Best model saved at epoch 1 with AUC: 0.8738 and accuracy: 0.8253
+Accuracy:          0.8253
+Misclassification: 0.1747
+Precision:         0.7183
+Recall:            0.4653
+AUC:               0.8683
+Results logged to 'SVMlogs/DP_eps_10.0_SVMresult_20260426_145516.txt'
+訓練 MLP 模組...
+Iteration 10/100 | Train Acc: 0.8442 | Test Acc: 0.8417 | AUC: 0.8867
+Iteration 20/100 | Train Acc: 0.8449 | Test Acc: 0.8436 | AUC: 0.8880
+Iteration 30/100 | Train Acc: 0.8459 | Test Acc: 0.8441 | AUC: 0.8880
+Iteration 40/100 | Train Acc: 0.8459 | Test Acc: 0.8444 | AUC: 0.8876
+Iteration 50/100 | Train Acc: 0.8467 | Test Acc: 0.8446 | AUC: 0.8870
+Iteration 60/100 | Train Acc: 0.8472 | Test Acc: 0.8444 | AUC: 0.8862
+Iteration 70/100 | Train Acc: 0.8477 | Test Acc: 0.8434 | AUC: 0.8853
+Iteration 80/100 | Train Acc: 0.8485 | Test Acc: 0.8428 | AUC: 0.8844
+Iteration 90/100 | Train Acc: 0.8496 | Test Acc: 0.8422 | AUC: 0.8835
+Iteration 100/100 | Train Acc: 0.8498 | Test Acc: 0.8420 | AUC: 0.8825
+Best model saved at epoch 25 with AUC: 0.8881 and accuracy: 0.8441
+Accuracy:          0.8441
+Misclassification: 0.1559
+Precision:         0.7244
+Recall:            0.5810
+AUC:               0.8881
+Results logged to 'MLPlogs/DP_eps_10.0_MLPresult_20260426_145545.txt'
+
+── 統計相似性評估（TVD）────────────────────────────────
+  ε=0.1 平均 TVD: 0.3338
+  ε=0.5 平均 TVD: 0.2401
+  ε=1.0 平均 TVD: 0.2393
+  ε=5.0 平均 TVD: 0.1902
+  ε=10.0 平均 TVD: 0.1884
+
+=== 期中作業 DP 合成數據 結果摘要 (midterm-HW1) ===
+Epsilon    Runtime(s)   Avg TVD  SVM AUC  SVM ACC  MLP AUC  MLP ACC
+0.1              43.3    0.3338   0.7948   0.7347   0.8162   0.8014
+0.5              40.0    0.2401   0.7098   0.7563   0.8096   0.7677
+1.0              39.6    0.2393   0.8448   0.8153   0.8672   0.8263
+5.0              38.8    0.1902   0.8654   0.8216   0.8918   0.8448
+10.0             40.6    0.1884   0.8683   0.8253   0.8881   0.8441
+(.venv) (base) hikaru820@DESKTOP-7L675S6:~/NTUST_Data-Privacy-and-Security/HW1$ /home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/.venv/bin/python "/home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/ML part/midterm_HW1_plot.py"
+=== 解析後的評估數據 ===
+                    Method Parameter    AUC  Accuracy
+                  Baseline  Original 0.9146    0.8554
+         K-Anonymity (HW1)       K=2 0.9086    0.8512
+         K-Anonymity (HW1)       K=5 0.9073    0.8517
+         K-Anonymity (HW1)      K=10 0.9067    0.8506
+         K-Anonymity (HW1)      K=25 0.9118    0.8589
+         K-Anonymity (HW1)      K=50 0.9114    0.8588
+DP Synthetic (midterm-HW1)   Eps=0.1 0.8162    0.8014
+DP Synthetic (midterm-HW1)   Eps=0.5 0.8096    0.7677
+DP Synthetic (midterm-HW1)   Eps=1.0 0.8672    0.8263
+DP Synthetic (midterm-HW1)   Eps=5.0 0.8918    0.8448
+DP Synthetic (midterm-HW1)  Eps=10.0 0.8881    0.8441
+
+對比圖表繪製成功！已儲存為 /home/hikaru820/NTUST_Data-Privacy-and-Security/HW1/ML part/HW1_Midterm_Comparison.png
