@@ -15,9 +15,9 @@ from MLP import train_mlp
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-EPSILONS = [0.1, 1.0, 10.0]
+EPSILONS = [0.1, 0.5, 1.0, 5.0, 10.0]
 base_dir = Path(__file__).resolve().parent
-clean_data_path = base_dir.parent / 'adult_cleaned.csv'
+clean_data_path = base_dir.parent / 'Adult' / 'adult_cleaned.csv'
 
 # 設定 DataSynthesizer 輸出目錄
 out_dir = base_dir.parent / 'DP_outputs'
@@ -90,15 +90,24 @@ def run_midterm_HW1():
         print(f"錯誤：找不到我們 HW1 清洗好的原始數據 {clean_data_path}。請確保它存在！")
         return
 
-    # 計算 tuple 數量
+    # 載入並前處理：移除 fnlwgt（人口普查抽樣權重，非個人屬性，不需合成）
     clean_df = pd.read_csv(clean_data_path)
+    print(f"原始資料: {clean_df.shape}")
+    if 'fnlwgt' in clean_df.columns:
+        clean_df = clean_df.drop(columns=['fnlwgt'])
     num_tuples_to_generate = len(clean_df)
 
+    # 存成前處理後的暫存檔，供 DataDescriber 使用
+    preprocessed_path = out_dir / 'adult_preprocessed.csv'
+    clean_df.to_csv(preprocessed_path, index=False)
+
+    dp_results = {}
     svm_results = {}
     mlp_results = {}
 
     for eps in EPSILONS:
         print(f"\n--- 開始生成 DP 合成數據 (Epsilon = {eps}) ---")
+        start = time.time()
         description_file = out_dir / f'description_eps_{eps}.json'
         synthetic_data_file = out_dir / f'adult_dp_{eps}.csv'
         
@@ -106,21 +115,24 @@ def run_midterm_HW1():
         describer = DataDescriber(category_threshold=15) 
         # mode='correlated_attribute_mode' 也就是基於貝氏網路的 PrivBayes 方法
         describer.describe_dataset_in_correlated_attribute_mode(
-            dataset_file=str(clean_data_path), 
-            epsilon=eps, 
+            dataset_file=str(preprocessed_path),
+            epsilon=eps,
             k=2 # k 是 PrivBayes 的 max parents in Bayesian network
         )
         describer.save_dataset_description_to_file(str(description_file))
-        
+
         # ----- 2. 生成合成數據 -----
         generator = DataGenerator()
         generator.generate_dataset_in_correlated_attribute_mode(
-            num_tuples_to_generate, 
+            num_tuples_to_generate,
             str(description_file)
         )
         generator.save_synthetic_data(str(synthetic_data_file))
-        
-        print(f"合成數據生成完畢，已保存至 {synthetic_data_file}")
+
+        elapsed = time.time() - start
+        synthetic_df = pd.read_csv(synthetic_data_file)
+        dp_results[eps] = {'df': synthetic_df, 'time': elapsed}
+        print(f"  完成！耗時 {elapsed:.1f}s，生成 {len(synthetic_df)} 筆，已保存至 {synthetic_data_file}")
         
         # ----- 3. 機器學習訓練 (套用 HW1 邏輯) -----
         print(f"\n--- 開始使用 DP 合成數據 (Epsilon = {eps}) 訓練模型 ---")

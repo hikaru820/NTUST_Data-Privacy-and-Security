@@ -1,0 +1,9 @@
+smartnoise-synth 
+pandas 
+scikit-learn 
+matplotlib 
+seaborn
+DataSynthesizer
+joblib
+numpy
+docx
