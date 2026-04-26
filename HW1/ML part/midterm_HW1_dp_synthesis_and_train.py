@@ -108,7 +108,10 @@ def marginal_tvd(real_df, syn_df, col):
 
 def run_midterm_HW1():
     print("=== 初始化期中作業：差異隱私合成數據生成 (PrivBayes 模式) ===")
-    
+
+    # SVM.py / MLP.py 用相對路徑建立 logs 資料夾，需固定工作目錄在 ML part/
+    os.chdir(base_dir)
+
     if not clean_data_path.exists():
         print(f"錯誤：找不到我們 HW1 清洗好的原始數據 {clean_data_path}。請確保它存在！")
         return
@@ -174,7 +177,7 @@ def run_midterm_HW1():
         mlp_res = train_mlp(x_train, x_test, y_train, y_test, label=f'DP_eps_{eps}')
         mlp_results[eps] = mlp_res
         
-    # ── 步驟五：計算各 epsilon 的平均 TVD ───────────────────────
+    # ── 計算各 epsilon 的平均 TVD ───────────────────────
     # 對所有欄位取平均，得到整體統計相似性的單一指標
     print("\n── 統計相似性評估（TVD）────────────────────────────────")
     tvd_results = {}

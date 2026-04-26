@@ -1,0 +1,8 @@
+
+# DP 合成資料（可重新產生，不需版控）
+DP_outputs/adult_dp_*.csv
+DP_outputs/adult_preprocessed.csv
+
+# ML 模型檔（可重新訓練）
+ML part/MLPmodels/
+ML part/SVMmodels/

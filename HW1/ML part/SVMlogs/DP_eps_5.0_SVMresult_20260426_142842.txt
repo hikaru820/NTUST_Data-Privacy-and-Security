@@ -1,0 +1,15 @@
+=== SVM Results ===
+Timestamp:         20260426_142842
+Best Epoch:        1/300
+Dynamic Scheduler: True
+
+--- Model Config ---
+Learning Rate:     invscaling
+eta0:              0.005
+
+--- Metrics ---
+AUC:               0.8654
+Accuracy:          0.8216
+Misclassification: 0.1784
+Precision:         0.7099
+Recall:            0.4521
