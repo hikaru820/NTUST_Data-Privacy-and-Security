@@ -6,7 +6,7 @@ from attack_model import FaceAttackCNN
 from utils import get_dataloaders
 from evaluate import run_all_evaluations
 
-def train_model(model, train_loader, criterion, optimizer, num_epochs=30, device='cpu'):
+def train_model(model, train_loader, criterion, optimizer, num_epochs=30, device: str | torch.device = 'cpu'):
     """
     訓練 CNN 模型
     """
