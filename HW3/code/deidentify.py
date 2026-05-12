@@ -26,12 +26,14 @@ def generate_deidentified_datasets(base_dir="../dataset"):
     
     # 定義要做的去識別化參數
     methods = {
+        'pixel_b2': lambda x: apply_pixelization(x, 2),
         'pixel_b4': lambda x: apply_pixelization(x, 4),
         'pixel_b8': lambda x: apply_pixelization(x, 8),
         'pixel_b16': lambda x: apply_pixelization(x, 16),
+        'blur_k5': lambda x: apply_gaussian_blur(x, 5),
         'blur_k15': lambda x: apply_gaussian_blur(x, 15),
         'blur_k45': lambda x: apply_gaussian_blur(x, 45),
-        'blur_k99': lambda x: apply_gaussian_blur(x, 99),
+        'blur_k95': lambda x: apply_gaussian_blur(x, 95),
     }
     
     for method_name, func in methods.items():
