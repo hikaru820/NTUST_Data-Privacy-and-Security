@@ -24,7 +24,7 @@ def evaluate_model(model, dataloader, device):
     accuracy = 100 * correct / total if total > 0 else 0
     return accuracy
 
-def run_all_evaluations(model_path, dataloaders_dict, num_classes=40, input_channels=1, device='cpu'):
+def run_all_evaluations(model_path, dataloaders_dict, num_classes=40, input_channels=1, device: str | torch.device = 'cpu'):
     """
     載入 trained model，測試不同版本的圖片並輸出各組 accuracy
     

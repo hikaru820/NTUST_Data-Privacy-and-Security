@@ -2,20 +2,23 @@ import os
 import cv2
 import numpy as np
 
-def add_laplace_noise(img, epsilon, sensitivity=255.0):
+def add_laplace_noise(img, epsilon, b=None, k=None, m=16):
     """
-    對圖片加入 Laplace Noise 以達成 Differential Privacy
-    :param img: 原始圖片 (0-255)
-    :param epsilon: 隱私預算 (越小保護越強，雜訊越大)
-    :param sensitivity: 影像像素最大可能變動值，預設為 255
+    對已 pixelized 或 blurred 過的圖加 Laplace noise (DP-Pix / DP-Blur)
+    :param b: 若來源是 pixelization，傳入 block size
+    :param k: 若來源是 Gaussian blur，傳入 kernel size
+    :param m: neighborhood 參數 (預設 16，跟隨 Fan TPDP2019)
     """
+    if b is not None:
+        sensitivity = 255.0 * m / (b * b)        # DP-Pix
+    elif k is not None:
+        sensitivity = 255.0 * m / (k * k)        # DP-Blur (近似)
+    else:
+        sensitivity = 255.0
+    
     scale = sensitivity / epsilon
     noise = np.random.laplace(loc=0.0, scale=scale, size=img.shape)
-    
-    noisy_img = img.astype(np.float32) + noise
-    
-    # 限制數值範圍並轉換回 uint8
-    noisy_img = np.clip(noisy_img, 0, 255).astype(np.uint8)
+    noisy_img = np.clip(img.astype(np.float32) + noise, 0, 255).astype(np.uint8)
     return noisy_img
 
 def generate_dp_datasets(base_dir="../dataset"):
@@ -52,7 +55,10 @@ def generate_dp_datasets(base_dir="../dataset"):
                     
                     if img is not None:
                         # 加入 DP Noise
-                        noisy_img = add_laplace_noise(img, eps)
+                        if source == 'pixel_b16':
+                            noisy_img = add_laplace_noise(img, eps, b=16)
+                        elif source == 'blur_k99':
+                            noisy_img = add_laplace_noise(img, eps, k=99)
                         
                         # 儲存
                         out_path = os.path.join(person_out_dir, img_name)
