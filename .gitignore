@@ -21,3 +21,6 @@ HW1/adult_k*.csv
 
 # PDF assignment files (optional: remove if you want to track them)
 # HW1/*.pdf
+
+# 忽略HW3的Dataset結果
+HW3/dataset/

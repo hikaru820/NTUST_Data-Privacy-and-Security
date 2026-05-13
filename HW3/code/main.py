@@ -2,6 +2,7 @@ import os
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import pandas as pd
 from attack_model import FaceAttackCNN
 from utils import get_dataloaders
 from evaluate import run_all_evaluations
@@ -60,29 +61,49 @@ def main():
     # 建立結果資料夾
     os.makedirs('../results', exist_ok=True)
     
-    # 1. 取得資料
-    print("Loading data...")
-    train_loader, test_loaders_dict = get_dataloaders(batch_size=BATCH_SIZE)
-    
-    # 2. 建立模型與訓練元件
-    model = FaceAttackCNN(num_classes=NUM_CLASSES)
-    criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
-    
-    # 3. 訓練模型
-    print("\n--- Start Training ---")
-    trained_model = train_model(model, train_loader, criterion, optimizer, num_epochs=NUM_EPOCHS, device=DEVICE)
-    
-    # 儲存模型權重
-    torch.save(trained_model.state_dict(), MODEL_PATH)
-    print(f"Model saved to {MODEL_PATH}")
-    
-    # 4. 進行評估 (呼叫 evaluate.py 的函式)
-    print("\n--- Start Evaluation ---")
-    df_results = run_all_evaluations(MODEL_PATH, test_loaders_dict, num_classes=NUM_CLASSES, device=DEVICE)
-    
-    print("\n最終攻擊準確率結果:")
-    print(df_results)
+    # 攻擊者列表。要新增就在這裡加一項即可。
+    attackers = [
+        {'name': 'orig',     'train_source': 'original'},   # 原本的 naive 攻擊者
+        {'name': 'adaptive_blur_k99', 'train_source': 'blur_k99'},   # 自適應攻擊者
+    ]
+
+    all_results = {}
+    for atk in attackers:
+        name, src = atk['name'], atk['train_source']
+        print(f"\n========== 訓練攻擊者: {name}  (來源: {src}) ==========")
+
+        train_loader, test_loaders_dict = get_dataloaders(
+            batch_size=BATCH_SIZE, train_source=src
+        )
+
+        model = FaceAttackCNN(num_classes=NUM_CLASSES)
+        criterion = nn.CrossEntropyLoss()
+        optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
+
+        trained = train_model(model, train_loader, criterion, optimizer,
+                              num_epochs=NUM_EPOCHS, device=DEVICE)
+
+        model_path = f'../results/best_model_{name}.pth'
+        torch.save(trained.state_dict(), model_path)
+        print(f"Model saved to {model_path}")
+
+        df = run_all_evaluations(model_path, test_loaders_dict,
+                                 num_classes=NUM_CLASSES, device=DEVICE, tag=name)
+        all_results[name] = df
+
+    # 把所有攻擊者的結果合成一張對照表
+    merged = None
+    for name, df in all_results.items():
+        sub = df.rename(columns={'準確率': f'準確率_{name}'})
+        if merged is None:
+            merged = sub.copy()
+        else:
+            # left join 保留第一個 df 的順序，且兩邊的 ===== 分隔列會自動對齊
+            merged = merged.merge(sub, on='資料集', how='left')
+
+    merged.to_csv('../results/step2_accuracy_comparison.csv', index=False)
+    print("\n[完成] 對照表已存到 ../results/step2_accuracy_comparison.csv")
+    print(merged)
 
 if __name__ == "__main__":
     main()

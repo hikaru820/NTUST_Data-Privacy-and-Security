@@ -1,0 +1,60 @@
+資料集,準確率
+===== original =====,
+original,92.50%
+===== pixel =====,
+pixel_b2,92.50%
+pixel_b4,92.50%
+pixel_b8,75.00%
+pixel_b16,43.75%
+===== blur =====,
+blur_k5,90.00%
+blur_k15,85.00%
+blur_k45,38.75%
+blur_k95,22.50%
+blur_k99,20.00%
+===== dp_original =====,
+dp_original_eps0.5,5.00%
+dp_original_eps1.0,13.75%
+dp_original_eps5.0,76.25%
+dp_original_eps10.0,90.00%
+dp_original_eps25.0,92.50%
+dp_original_eps50.0,92.50%
+dp_original_eps100.0,92.50%
+===== dp_pixel_b4 =====,
+dp_pixel_b4_eps0.1,2.50%
+dp_pixel_b4_eps0.5,5.00%
+dp_pixel_b4_eps1.0,11.25%
+dp_pixel_b4_eps5.0,71.25%
+dp_pixel_b4_eps10.0,90.00%
+dp_pixel_b4_eps25.0,92.50%
+dp_pixel_b4_eps50.0,92.50%
+dp_pixel_b4_eps100.0,92.50%
+===== dp_blur_k15 =====,
+dp_blur_k15_eps0.1,1.25%
+dp_blur_k15_eps0.5,3.75%
+dp_blur_k15_eps1.0,7.50%
+dp_blur_k15_eps5.0,72.50%
+dp_blur_k15_eps10.0,90.00%
+dp_blur_k15_eps25.0,86.25%
+dp_blur_k15_eps50.0,86.25%
+dp_blur_k15_eps100.0,85.00%
+===== dp_pixel_b16 =====,
+dp_pixel_b16_eps0.1,13.75%
+dp_pixel_b16_eps0.5,38.75%
+dp_pixel_b16_eps1.0,40.00%
+dp_pixel_b16_eps5.0,31.25%
+dp_pixel_b16_eps10.0,35.00%
+dp_pixel_b16_eps25.0,43.75%
+dp_pixel_b16_eps50.0,42.50%
+dp_pixel_b16_eps100.0,43.75%
+===== dp_blur_k99 =====,
+dp_blur_k99_eps0.1,21.25%
+dp_blur_k99_eps0.5,21.25%
+dp_blur_k99_eps1.0,20.00%
+dp_blur_k99_eps5.0,28.75%
+dp_blur_k99_eps10.0,22.50%
+dp_blur_k99_eps25.0,22.50%
+dp_blur_k99_eps50.0,21.25%
+dp_blur_k99_eps100.0,21.25%
+===== 基準值 (Baseline) =====,
+隨機猜測 (Random Guess),2.50%
