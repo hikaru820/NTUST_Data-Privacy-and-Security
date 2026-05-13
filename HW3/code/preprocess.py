@@ -1,7 +1,10 @@
 import os
+from typing import cast
+
 import cv2
 import numpy as np
 from sklearn.datasets import fetch_olivetti_faces
+from sklearn.utils import Bunch
 
 def download_and_save_dataset(base_dir="../dataset/original"):
     """
@@ -10,9 +13,9 @@ def download_and_save_dataset(base_dir="../dataset/original"):
     將 8 張做為 train，2 張做為 test。
     """
     print("Downloading AT&T Face Dataset...")
-    faces = fetch_olivetti_faces()
-    images = faces.images  # (400, 64, 64)
-    targets = faces.target  # (400,)
+    faces = cast(Bunch, fetch_olivetti_faces(return_X_y=False))
+    images = faces["images"]  # (400, 64, 64)
+    targets = faces["target"]  # (400,)
     
     os.makedirs(base_dir, exist_ok=True)
     
