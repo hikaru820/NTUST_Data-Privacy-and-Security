@@ -31,7 +31,7 @@ def generate_dp_datasets(
 ):
     # 預設值：定義要處理的原始來源與 ε（Epsilon）的網格組合
     if sources is None:
-        sources = ['original', 'pixel_b4', 'blur_k15', 'pixel_b16', 'blur_k99']
+        sources = ['original', 'pixel_b4', 'pixel_b8', 'blur_k15', 'pixel_b16', 'blur_k99']
     if epsilons is None:
         epsilons = [0.1, 0.5, 1.0, 5.0, 10.0, 25.0, 50.0, 100.0]
 

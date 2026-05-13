@@ -65,6 +65,7 @@ def main():
     attackers = [
         {'name': 'orig',     'train_source': 'original'},   # 原本的 naive 攻擊者
         {'name': 'adaptive_blur_k99', 'train_source': 'blur_k99'},   # 自適應攻擊者
+        {'name': 'adaptive_pixel_b8', 'train_source': 'pixel_b8'},
     ]
 
     all_results = {}
