@@ -1,0 +1,15 @@
+INFO :      [SUMMARY]
+INFO :      Run finished 3 round(s) in 66.75s
+INFO :          History (loss, distributed):
+INFO :                  round 1: 4.57762336730957
+INFO :                  round 2: 3.9154117107391357
+INFO :                  round 3: 3.520833969116211
+INFO :          History (loss, centralized):
+INFO :                  round 0: 4.605532951354981
+INFO :                  round 1: 4.577623156738281
+INFO :                  round 2: 3.915411622619629
+INFO :                  round 3: 3.5208340629577637
+INFO :          History (metrics, distributed, evaluate):
+INFO :          {'accuracy': [(1, 0.0189), (2, 0.1024), (3, 0.1623)]}
+INFO :          History (metrics, centralized):
+INFO :          {'accuracy': [(0, 0.01), (1, 0.0189), (2, 0.1024), (3, 0.1623)]}

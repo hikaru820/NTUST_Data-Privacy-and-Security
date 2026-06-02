@@ -1,5 +1,12 @@
+# --- Python virtual environment ---
 FL/.venv/
-FL/__pycache__/
-FL/*.pyc
-FL/data/         # CIFAR-100 dataset 會下載到這，~170MB 不該進 git
-FL/checkpoints/  # 訓練好的 model weights，後續會大
+
+# --- Python cache ---
+FL/**/__pycache__/
+FL/**/*.pyc
+
+# --- CIFAR-100 dataset (auto-downloaded, ~170MB) ---
+FL/Code/data/
+
+# --- Trained model checkpoints (large, easily regenerated) ---
+FL/checkpoints/

@@ -1,0 +1,88 @@
+INFO :      [SUMMARY]
+INFO :      Run finished 20 round(s) in 368.55s
+INFO :          History (loss, distributed):
+INFO :                  round 1: 4.60564661026001
+INFO :                  round 2: 4.361944198608398
+INFO :                  round 3: 4.1752214431762695
+INFO :                  round 4: 3.982868194580078
+INFO :                  round 5: 3.8383584022521973
+INFO :                  round 6: 3.7381815910339355
+INFO :                  round 7: 3.6098105907440186
+INFO :                  round 8: 3.5050716400146484
+INFO :                  round 9: 3.3456358909606934
+INFO :                  round 10: 3.2114877700805664
+INFO :                  round 11: 3.0768494606018066
+INFO :                  round 12: 2.9300670623779297
+INFO :                  round 13: 2.8157331943511963
+INFO :                  round 14: 2.6959385871887207
+INFO :                  round 15: 2.5782814025878906
+INFO :                  round 16: 2.4999911785125732
+INFO :                  round 17: 2.4031810760498047
+INFO :                  round 18: 2.3395047187805176
+INFO :                  round 19: 2.2579843997955322
+INFO :                  round 20: 2.222862720489502
+INFO :          History (loss, centralized):
+INFO :                  round 0: 4.605566505432129
+INFO :                  round 1: 4.605646728515625
+INFO :                  round 2: 4.361944129943848
+INFO :                  round 3: 4.175221614074707
+INFO :                  round 4: 3.9828682220458984
+INFO :                  round 5: 3.838358296585083
+INFO :                  round 6: 3.738181575012207
+INFO :                  round 7: 3.6098105155944826
+INFO :                  round 8: 3.505071530914307
+INFO :                  round 9: 3.3456358940124513
+INFO :                  round 10: 3.2114877449035646
+INFO :                  round 11: 3.076849465560913
+INFO :                  round 12: 2.9300671615600584
+INFO :                  round 13: 2.8157332489013673
+INFO :                  round 14: 2.6959385887145997
+INFO :                  round 15: 2.5782813163757323
+INFO :                  round 16: 2.4999910675048826
+INFO :                  round 17: 2.40318116645813
+INFO :                  round 18: 2.3395046688079835
+INFO :                  round 19: 2.2579844116210936
+INFO :                  round 20: 2.222862773132324
+INFO :          History (metrics, distributed, evaluate):
+INFO :          {'accuracy': [(1, 0.01),
+INFO :                        (2, 0.04250000000000001),
+INFO :                        (3, 0.0694),
+INFO :                        (4, 0.0907),
+INFO :                        (5, 0.113),
+INFO :                        (6, 0.1322),
+INFO :                        (7, 0.1611),
+INFO :                        (8, 0.1674),
+INFO :                        (9, 0.1968),
+INFO :                        (10, 0.2145),
+INFO :                        (11, 0.2403),
+INFO :                        (12, 0.2692),
+INFO :                        (13, 0.2845),
+INFO :                        (14, 0.3093),
+INFO :                        (15, 0.3302),
+INFO :                        (16, 0.3456),
+INFO :                        (17, 0.3696),
+INFO :                        (18, 0.3842),
+INFO :                        (19, 0.3994),
+INFO :                        (20, 0.4109)]}
+INFO :          History (metrics, centralized):
+INFO :          {'accuracy': [(0, 0.0098),
+INFO :                        (1, 0.01),
+INFO :                        (2, 0.0425),
+INFO :                        (3, 0.0694),
+INFO :                        (4, 0.0907),
+INFO :                        (5, 0.113),
+INFO :                        (6, 0.1322),
+INFO :                        (7, 0.1611),
+INFO :                        (8, 0.1674),
+INFO :                        (9, 0.1968),
+INFO :                        (10, 0.2145),
+INFO :                        (11, 0.2403),
+INFO :                        (12, 0.2692),
+INFO :                        (13, 0.2845),
+INFO :                        (14, 0.3093),
+INFO :                        (15, 0.3302),
+INFO :                        (16, 0.3456),
+INFO :                        (17, 0.3696),
+INFO :                        (18, 0.3842),
+INFO :                        (19, 0.3994),
+INFO :                        (20, 0.4109)]}

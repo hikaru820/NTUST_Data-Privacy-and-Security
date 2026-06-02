@@ -40,7 +40,7 @@ except ImportError:
 
 # torch-directml is optional (AMD-only)
 try:
-    import torch_directml
+    import torch_directml # type: ignore
     dml_ver = getattr(torch_directml, "__version__", "installed")
     print(f"torch-directml: {dml_ver}")
     HAS_DML = True
