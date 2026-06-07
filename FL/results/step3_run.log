@@ -1,0 +1,58 @@
+W0605 17:23:52.492000 38387 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+[INFO] device=cpu  sigmas=[0.0, 0.5, 1.0, 2.0]
+[INFO] client sizes = [1200, 1200, 1200, 1200, 1200]
+[RUN] noise_multiplier σ = 0.0
+  [σ=0    round  1/8] test_acc=0.0145  eps=inf
+  [σ=0    round  2/8] test_acc=0.0140  eps=inf
+  [σ=0    round  3/8] test_acc=0.0135  eps=inf
+  [σ=0    round  4/8] test_acc=0.0170  eps=inf
+  [σ=0    round  5/8] test_acc=0.0205  eps=inf
+  [σ=0    round  6/8] test_acc=0.0240  eps=inf
+  [σ=0    round  7/8] test_acc=0.0345  eps=inf
+  [σ=0    round  8/8] test_acc=0.0330  eps=inf
+[RUN] noise_multiplier σ = 0.5
+  [σ=0.5  round  1/8] test_acc=0.0115  eps=8.7118
+  [σ=0.5  round  2/8] test_acc=0.0105  eps=10.2384
+  [σ=0.5  round  3/8] test_acc=0.0125  eps=11.4561
+  [σ=0.5  round  4/8] test_acc=0.0100  eps=12.4978
+  [σ=0.5  round  5/8] test_acc=0.0090  eps=13.4136
+  [σ=0.5  round  6/8] test_acc=0.0160  eps=14.2673
+  [σ=0.5  round  7/8] test_acc=0.0115  eps=15.1054
+  [σ=0.5  round  8/8] test_acc=0.0170  eps=15.8167
+[RUN] noise_multiplier σ = 1.0
+  [σ=1    round  1/8] test_acc=0.0100  eps=1.3550
+  [σ=1    round  2/8] test_acc=0.0090  eps=1.5190
+  [σ=1    round  3/8] test_acc=0.0070  eps=1.6622
+  [σ=1    round  4/8] test_acc=0.0070  eps=1.7947
+  [σ=1    round  5/8] test_acc=0.0075  eps=1.9200
+  [σ=1    round  6/8] test_acc=0.0070  eps=2.0395
+  [σ=1    round  7/8] test_acc=0.0085  eps=2.1546
+  [σ=1    round  8/8] test_acc=0.0095  eps=2.2660
+[RUN] noise_multiplier σ = 2.0
+  [σ=2    round  1/8] test_acc=0.0085  eps=0.2921
+  [σ=2    round  2/8] test_acc=0.0100  eps=0.3645
+  [σ=2    round  3/8] test_acc=0.0060  eps=0.4369
+  [σ=2    round  4/8] test_acc=0.0055  eps=0.5043
+  [σ=2    round  5/8] test_acc=0.0080  eps=0.5646
+  [σ=2    round  6/8] test_acc=0.0085  eps=0.6197
+  [σ=2    round  7/8] test_acc=0.0085  eps=0.6708
+  [σ=2    round  8/8] test_acc=0.0065  eps=0.7186
+[INFO] results saved to ../results/dp_experiment/per_round.csv 與 tradeoff.csv
+[INFO] 最終 trade-off：
+    σ=0.0  acc=0.0330  ε=inf
+    σ=0.5  acc=0.0170  ε=15.8167
+    σ=1.0  acc=0.0095  ε=2.2660
+    σ=2.0  acc=0.0065  ε=0.7186
+[INFO] device=cpu
+Traceback (most recent call last):
+  File "/Users/mac/github/NTUST_Data-Privacy-and-Security/FL/Code/attack_dp_defense.py", line 161, in <module>
+    main()
+  File "/Users/mac/github/NTUST_Data-Privacy-and-Security/FL/Code/attack_dp_defense.py", line 78, in main
+    model = load_model(args.checkpoint, device)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/github/NTUST_Data-Privacy-and-Security/FL/Code/attack_dlg.py", line 132, in load_model
+    model.load_state_dict(state_dict, strict=True)
+  File "/Users/mac/github/NTUST_Data-Privacy-and-Security/FL/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 2638, in load_state_dict
+    raise RuntimeError(
+RuntimeError: Error(s) in loading state_dict for CIFAR100CNN:
+	Missing key(s) in state_dict: "bn1.running_mean", "bn1.running_var", "bn2.running_mean", "bn2.running_var", "bn3.running_mean", "bn3.running_var", "bn4.running_mean", "bn4.running_var", "bn5.running_mean", "bn5.running_var", "bn6.running_mean", "bn6.running_var". 

@@ -1,0 +1,20 @@
+W0605 20:13:59.600000 49967 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+/Users/mac/github/NTUST_Data-Privacy-and-Security/FL/.venv/lib/python3.11/site-packages/opacus/accountants/analysis/rdp.py:332: UserWarning: Optimal order is the smallest alpha. Please consider expanding the range of alphas to get a tighter privacy bound.
+  warnings.warn(
+[INFO] device=cpu
+[WARN] checkpoint 不存在：../checkpoints/global_model.pth，改用 Step 2 隨機 BatchNorm 模型。
+[WARN] Checkpoint not found: ../checkpoints/global_model.pth. Using random weights.
+[INFO] victim labels = [2]
+[σ=0    ] mse=0.05747  psnr= 12.41 dB  grad_match=0.1010  eps(1-step)=inf
+[σ=0.01 ] mse=0.12600  psnr=  9.00 dB  grad_match=329.7411  eps(1-step)=5611.778
+[σ=0.05 ] mse=0.20364  psnr=  6.91 dB  grad_match=8242.1191  eps(1-step)=294.861
+[σ=0.1  ] mse=0.22520  psnr=  6.47 dB  grad_match=32968.9922  eps(1-step)=96.116
+[σ=0.5  ] mse=0.24643  psnr=  6.08 dB  grad_match=824253.8125  eps(1-step)=10.726
+[σ=1    ] mse=0.25014  psnr=  6.02 dB  grad_match=3297028.7500  eps(1-step)=4.729
+[INFO] comparison grid (original + each σ) saved to ../results/dp_defense/defense_grid_idlg_iid.png
+[INFO] metrics saved to ../results/dp_defense/defense_metrics.csv
+[saved] ../results/dp_figures/defense_psnr_vs_sigma.png
+[saved] ../results/dp_figures/tradeoff_acc_vs_eps.png
+[saved] ../results/dp_figures/acc_vs_round.png
+[done] figures in ../results/dp_figures
+EXPA2_DONE
